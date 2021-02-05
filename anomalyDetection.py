@@ -17,21 +17,23 @@ bruce_data_copy.head()
 
 # #visualize the data
 #
-# bruce_data.describe()
-#
-# bruce_data_copy[["Asset1","Asset2"]].agg(['min','max','mean','std']).round(decimals=2)
-#
-# fig, ax = plot.subplots(1,1)
-# # bruce_data_copy[["Asset1","Asset2"]].kde(ax=ax, legend=False,title='Histogram: Asset1 vs Asset2')
-# # Histograms of the data
-# bruce_data_copy[["Asset1","Asset2"]].plot.hist(grid=True, bins=100, ax=ax)
-#
-# # Creating a histogram of a normal distribution with mean 10 and std 1.
-# dist = norm(loc=10, scale=1).rvs(size=2000)
-# x = np.linspace(0,20,num=100)
-#
-# # Dropping all the plots on top of each other.
-# ax.hist(dist, bins=100)
+bruce_data.describe()
+
+bruce_data_copy[["Asset1","Asset2"]].agg(['min','max','mean','std']).round(decimals=2)
+
+fig, ax = plot.subplots(1,1)
+# bruce_data_copy[["Asset1","Asset2"]].kde(ax=ax, legend=False,title='Histogram: Asset1 vs Asset2')
+# Histograms of the data
+bruce_data_copy[["Asset1","Asset2"]].plot.hist(grid=True, bins=25, ax=ax,density=True)
+
+# Creating a histogram of a normal distribution with mean 10 and std 1.
+dist = norm(loc=10, scale=1).rvs(size=2000)
+x = np.linspace(-3,3,num=100)
+y=norm.pdf(x)
+# Dropping all the plots on top of each other.
+#ax.hist(dist, bins=100)
+plot.plot(x+10,y)
+
 #
 # ####
 
